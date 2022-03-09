@@ -3,5 +3,6 @@ include(
     ":app",
     ":auth",
     ":shared",
-    ":feature:home"
+    ":feature:home",
+    ":feature:feed"
 )
