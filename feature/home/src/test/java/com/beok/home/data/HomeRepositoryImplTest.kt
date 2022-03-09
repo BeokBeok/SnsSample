@@ -46,7 +46,8 @@ class HomeRepositoryImplTest {
         val mockResponse = HomeResponse(
             popularUsers = emptyList(),
             popularCards = emptyList(),
-            ok = false
+            ok = false,
+            errorMsg = "error"
         )
         coEvery {
             api.fetchHome()
@@ -56,6 +57,6 @@ class HomeRepositoryImplTest {
         val actual = repository.fetchHome().exceptionOrNull()
 
         // then
-        assertThat(actual).hasMessageThat().contains("response failed")
+        assertThat(actual).hasMessageThat().contains("error")
     }
 }
