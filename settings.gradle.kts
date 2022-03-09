@@ -4,5 +4,6 @@ include(
     ":auth",
     ":shared",
     ":feature:home",
-    ":feature:feed"
+    ":feature:feed",
+    ":feature:detail"
 )
