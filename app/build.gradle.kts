@@ -23,9 +23,16 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(project(":feature:home"))
+    implementation(project(":feature:feed"))
+
     AndroidX.run {
         implementation(CORE_KTX)
         implementation(APP_COMPAT)
