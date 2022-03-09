@@ -1,12 +1,11 @@
 plugins {
-    id("java-library")
-    id("kotlin")
+    id("com.android.library")
+    id("kotlin-android")
     id("kotlin-kapt")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+android {
+    androidLibrary()
 }
 
 dependencies {
@@ -24,7 +23,7 @@ dependencies {
     implementation(Coroutines.CORE)
 
     Hilt.run {
-        implementation(CORE)
+        implementation(ANDROID)
         kapt(COMPILER)
     }
 

@@ -6,12 +6,9 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    androidApplication()
 
     defaultConfig {
-        applicationId = "com.beok.ohousesample"
-        minSdk = 21
-        targetSdk = 32
         versionCode = 1
         versionName = "1.0"
     }
@@ -24,13 +21,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
 

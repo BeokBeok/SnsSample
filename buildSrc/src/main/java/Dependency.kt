@@ -1,3 +1,7 @@
+object Version {
+    const val KOTLIN = "1.5.31"
+}
+
 object AndroidX {
     const val CORE_KTX = "androidx.core:core-ktx:1.7.0"
     const val APP_COMPAT = "androidx.appcompat:appcompat:1.4.1"
@@ -40,9 +44,8 @@ object Coroutines {
 }
 
 object Hilt {
-    const val VERSION = "2.41"
+    const val VERSION = "2.40.1"
 
     const val ANDROID = "com.google.dagger:hilt-android:$VERSION"
     const val COMPILER = "com.google.dagger:hilt-compiler:$VERSION"
-    const val CORE = "com.google.dagger:hilt-core:$VERSION"
 }
