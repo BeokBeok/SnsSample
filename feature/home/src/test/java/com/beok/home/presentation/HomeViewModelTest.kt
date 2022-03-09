@@ -59,4 +59,15 @@ class HomeViewModelTest {
         // then
         assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(HomeState.Error(mockResponse))
     }
+
+    @Test
+    fun `카드를 클릭하면_CardClick 상태입니다`() {
+        // given
+
+        // when
+        viewModel.onClickCardId(id = 0)
+
+        // then
+        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(HomeState.CardClick(id = 0))
+    }
 }
