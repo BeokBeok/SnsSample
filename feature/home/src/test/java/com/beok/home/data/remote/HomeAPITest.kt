@@ -52,4 +52,25 @@ class HomeAPITest {
         assertThat(actual.popularCards?.size).isEqualTo(5)
         assertThat(actual.popularUsers?.size).isEqualTo(4)
     }
+
+    @Test
+    fun `유호하지 않은 홈 데이터를 불러오면_에러가 발생합니다`() = runBlocking {
+        // given
+        val response = MockResponse().setBody(HOME_INVALIDATE_JSON)
+            .setResponseCode(200)
+        server.enqueue(response)
+
+        // when
+        val actual = api.fetchHome()
+
+        // then
+        assertThat(actual.error_msg).isEmpty()
+    }
+
+    companion object {
+        private const val HOME_INVALIDATE_JSON =
+            """
+                {"ok":false,"error_msg":""}
+            """
+    }
 }
