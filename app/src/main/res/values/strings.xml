@@ -5,6 +5,7 @@
     <string name="tab_feed">사진 피드</string>
 
     <string name="login">로그인</string>
+    <string name="logout">로그아웃</string>
 
     <string name="label_main">main</string>
     <string name="label_auth">auth</string>

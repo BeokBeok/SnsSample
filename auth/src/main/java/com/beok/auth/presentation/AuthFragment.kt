@@ -3,6 +3,7 @@ package com.beok.auth.presentation
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.beok.auth.R
@@ -15,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class AuthFragment : BaseFragment<FragmentAuthBinding>(
     layoutResourceID = R.layout.fragment_auth
 ) {
-    private val viewModel by viewModels<AuthViewModel>()
+    private val viewModel by activityViewModels<AuthViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,9 +49,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                AuthState.LogIn -> {
-                    findNavController().popBackStack()
-                }
+                AuthState.LogIn -> Unit
             }
         }
     }
