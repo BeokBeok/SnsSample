@@ -19,7 +19,7 @@ internal data class HomeResponse(
 	val ok: Boolean? = null,
 
 	@Json(name = "error_msg")
-	val error_msg: String? = null
+	val errorMsg: String? = null
 ) : DataToDomainMapper<Home> {
 
 	override fun toDomain(): Home = Home(

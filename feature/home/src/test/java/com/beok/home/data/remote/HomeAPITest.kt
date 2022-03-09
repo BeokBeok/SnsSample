@@ -1,11 +1,9 @@
 package com.beok.home.data.remote
 
-import com.beok.home.data.model.HomeResponse
 import com.google.common.truth.Truth.assertThat
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.io.File
-import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -64,7 +62,7 @@ class HomeAPITest {
         val actual = api.fetchHome()
 
         // then
-        assertThat(actual.error_msg).isEmpty()
+        assertThat(actual.errorMsg).isEmpty()
     }
 
     companion object {

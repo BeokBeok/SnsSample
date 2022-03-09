@@ -62,8 +62,26 @@ class FeedAPITest {
         assertThat(actual.cards?.size).isEqualTo(20)
     }
 
+    @Test
+    fun `유효하지 않은 피드 데이터를 불러오면_에러가 발생합니다`() = runBlocking {
+        // given
+        val response = MockResponse().setBody(FEED_INVALIDATE_JSON)
+            .setResponseCode(200)
+        server.enqueue(response)
+
+        // when
+        val actual = api.fetchFeed()
+
+        // then
+        assertThat(actual.errorMsg).isEmpty()
+    }
+
     companion object {
         private const val PATH_FEED_JSON = "src/test/resources/feed.json"
         private const val PATH_FEED_MORE_JSON = "src/test/resources/feed_more.json"
+        private const val FEED_INVALIDATE_JSON =
+            """
+                {"ok":false,"error_msg":""}
+            """
     }
 }
