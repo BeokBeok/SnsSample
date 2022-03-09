@@ -29,6 +29,11 @@ dependencies {
         kapt(COMPILER)
     }
 
+    AndroidX.run {
+        testImplementation(CORE_TESTING)
+        implementation(FRAGMENT_KTX)
+    }
+
     testImplementation(JUnit.CORE)
     testImplementation(Google.TRUTH)
     testImplementation(Moshi.KOTLIN)
