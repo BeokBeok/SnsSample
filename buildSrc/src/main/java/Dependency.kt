@@ -21,7 +21,7 @@ object Network {
 }
 
 object Moshi {
-    private const val VERSION = "1.13.0"
+    private const val VERSION = "1.12.0"
 
     const val KOTLIN = "com.squareup.moshi:moshi-kotlin:$VERSION"
     const val ADAPTERS = "com.squareup.moshi:moshi-adapters:$VERSION"

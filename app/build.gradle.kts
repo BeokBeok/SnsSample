@@ -48,5 +48,18 @@ dependencies {
         kapt(COMPILER)
     }
 
+    Network.run {
+        implementation(RETROFIT)
+        implementation(CONVERTER_MOSHI)
+    }
+
+    Moshi.run {
+        implementation(KOTLIN)
+        implementation(ADAPTERS)
+        implementation(KOTLIN_CODEGEN)
+    }
+
+    implementation(Coroutines.CORE)
+
     testImplementation(JUnit.CORE)
 }
