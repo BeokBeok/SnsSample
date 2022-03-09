@@ -4,8 +4,9 @@ import com.beok.auth.data.model.AuthRequest
 import com.beok.auth.data.remote.AuthAPI
 import com.beok.auth.domain.repository.AuthRepository
 import com.beok.auth.domain.model.Auth
+import javax.inject.Inject
 
-internal class AuthRepositoryImpl(
+internal class AuthRepositoryImpl @Inject constructor(
     private val api: AuthAPI
 ) : AuthRepository {
 

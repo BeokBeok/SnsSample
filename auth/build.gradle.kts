@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -26,14 +27,20 @@ dependencies {
         implementation(KOTLIN_CODEGEN)
     }
 
-    implementation(Coroutines.CORE)
+    Coroutines.run {
+        implementation(CORE)
+        testImplementation(TEST)
+    }
 
     Hilt.run {
         implementation(ANDROID)
         kapt(COMPILER)
     }
 
-    implementation(AndroidX.FRAGMENT_KTX)
+    AndroidX.run {
+        testImplementation(CORE_TESTING)
+        implementation(FRAGMENT_KTX)
+    }
 
     implementation(Google.MATERIAL)
 
