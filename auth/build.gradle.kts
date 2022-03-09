@@ -1,14 +1,20 @@
 plugins {
     id("com.android.library")
-    id("kotlin-android")
+    id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
 }
 
 android {
     androidLibrary()
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
+    implementation(project(":shared"))
+
     Network.run {
         implementation(RETROFIT)
         implementation(CONVERTER_MOSHI)
@@ -26,6 +32,10 @@ dependencies {
         implementation(ANDROID)
         kapt(COMPILER)
     }
+
+    implementation(AndroidX.FRAGMENT_KTX)
+
+    implementation(Google.MATERIAL)
 
     testImplementation(JUnit.CORE)
     testImplementation(Google.TRUTH)
