@@ -33,8 +33,7 @@ class FeedViewModelTest {
     @Test
     fun `유효한 피드 데이터를 불러오면_Loaded 상태입니다`() = runBlocking {
         // given
-        val item = Card(userId = 0, imgUrl = "", description = "", id = 0)
-        val mockResponse = listOf(item)
+        val mockResponse = listOf(Card(userId = 0, imgUrl = "", description = "", id = 0))
         coEvery {
             fetchFeedUseCase.execute()
         } returns Result.success(mockResponse)
@@ -43,7 +42,8 @@ class FeedViewModelTest {
         viewModel.fetchFeed()
 
         // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(FeedState.Loaded(mockResponse))
+        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(FeedState.Loaded)
+        assertThat(viewModel.feed.getOrAwaitValue()).isEqualTo(mockResponse)
     }
 
     @Test

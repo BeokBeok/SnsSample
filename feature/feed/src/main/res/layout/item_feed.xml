@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.beok.feed.domain.model.Card" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            bind_imageView_srcForGlide="@{item.imgUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:contentDescription="@null"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.description}" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/holo_green_dark" />
+
+    </LinearLayout>
+</layout>

@@ -1,10 +1,76 @@
 package com.beok.feed.presentation
 
-import androidx.fragment.app.Fragment
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DiffUtil
+import com.beok.feed.BR
+import com.beok.feed.R
+import com.beok.feed.databinding.FragmentFeedBinding
+import com.beok.feed.domain.model.Card
+import com.beok.shared.base.BaseFragment
+import com.beok.shared.base.BaseListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FeedFragment : Fragment() {
+class FeedFragment : BaseFragment<FragmentFeedBinding>(
+    layoutResourceID = R.layout.fragment_feed
+) {
+    private val viewModel by viewModels<FeedViewModel>()
+    private val feedAdapter by lazy {
+        BaseListAdapter(
+            layoutResourceID = R.layout.item_feed,
+            bindingID = BR.item,
+            diffUtil = object : DiffUtil.ItemCallback<Card>() {
+                override fun areItemsTheSame(oldItem: Card, newItem: Card): Boolean =
+                    oldItem.id == newItem.id
+
+                override fun areContentsTheSame(oldItem: Card, newItem: Card): Boolean =
+                    oldItem == newItem
+            }
+        )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupUI()
+        setupObserver()
+        showContent()
+    }
+
+    private fun setupObserver() {
+        viewModel.state.observe(viewLifecycleOwner) {
+            when (it) {
+                is FeedState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        it.throwable.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                FeedState.Loaded -> {
+                    binding.pbFeed.isVisible = false
+                }
+                FeedState.Loading -> {
+                    binding.pbFeed.isVisible = true
+                }
+            }
+        }
+        viewModel.feed.observe(viewLifecycleOwner) {
+            feedAdapter.submitList(it)
+        }
+    }
+
+    private fun setupUI() {
+        binding.rvFeed.adapter = feedAdapter
+    }
+
+    private fun showContent() {
+        viewModel.fetchFeed()
+    }
 
     companion object {
         fun newInstance(): FeedFragment = FeedFragment()
