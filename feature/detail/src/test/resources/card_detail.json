@@ -1,0 +1,46 @@
+{
+  "card": {
+    "user_id": 0,
+    "img_url": "https://farm66.staticflickr.com/65535/51661871617_825cddcc88.jpg",
+    "description": "Monochrome, Voronezh, Russian Federation.",
+    "id": 79
+  },
+  "user": {
+    "nickname": "aaaa",
+    "introduction": "a소개합니다.",
+    "id": 0
+  },
+  "recommend_cards": [
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51663420094_8754560c57.jpg",
+      "description": "Boys Cockfighting, Misericord, Westminster Abbey",
+      "id": 53
+    },
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51662118372_10319134d2.jpg",
+      "description": "original OEM BRABUS VELOURS floor mats Blue seam, set of 2- Smart fortwo 450 LHD",
+      "id": 17
+    },
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51663613245_87cfd56b6f.jpg",
+      "description": "Monstrous Beasts, Misericord, Westminster Abbey",
+      "id": 52
+    },
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51663443774_d78dcdf075.jpg",
+      "description": "Parroquia San Andrés Apóstol \"Ex Convento San Diego de Alcalá\" San Andrés Cholula,Estado de Puebla,México",
+      "id": 44
+    },
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51661892022_0ce9966036.jpg",
+      "description": "Voronezh, Russian Federation.",
+      "id": 68
+    }
+  ],
+  "ok": true
+}
