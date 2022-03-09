@@ -3,8 +3,9 @@ package com.beok.detail.data
 import com.beok.detail.data.remote.CardDetailAPI
 import com.beok.detail.domain.model.CardDetail
 import com.beok.detail.domain.repository.CardDetailRepository
+import javax.inject.Inject
 
-internal class CardDetailRepositoryImpl(
+internal class CardDetailRepositoryImpl @Inject constructor(
     private val api: CardDetailAPI
 ) : CardDetailRepository {
 
