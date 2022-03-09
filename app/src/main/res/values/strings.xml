@@ -3,4 +3,6 @@
 
     <string name="tab_home">홈</string>
     <string name="tab_feed">사진 피드</string>
+
+    <string name="login">로그인</string>
 </resources>
