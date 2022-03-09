@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -21,4 +22,9 @@ dependencies {
     implementation(Google.MATERIAL)
     implementation(JUnit.CORE)
     implementation(Coroutines.TEST)
+
+    Glide.run {
+        implementation(CORE)
+        kapt(Glide.COMPILER)
+    }
 }

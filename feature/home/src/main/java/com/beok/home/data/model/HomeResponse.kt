@@ -16,7 +16,10 @@ internal data class HomeResponse(
 	val popularCards: List<PopularCardsItem>? = null,
 
 	@Json(name="ok")
-	val ok: Boolean? = null
+	val ok: Boolean? = null,
+
+	@Json(name = "error_msg")
+	val error_msg: String? = null
 ) : DataToDomainMapper<Home> {
 
 	override fun toDomain(): Home = Home(

@@ -59,3 +59,10 @@ object Navigation {
     const val FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:$VERSION"
     const val UI_KTX = "androidx.navigation:navigation-ui-ktx:$VERSION"
 }
+
+object Glide {
+    private const val GLIDE_VER = "4.13.1"
+
+    const val CORE = "com.github.bumptech.glide:glide:$GLIDE_VER"
+    const val COMPILER = "com.github.bumptech.glide:compiler:$GLIDE_VER"
+}

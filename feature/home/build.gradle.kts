@@ -7,6 +7,10 @@ plugins {
 
 android {
     androidLibrary()
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -32,6 +36,11 @@ dependencies {
     AndroidX.run {
         testImplementation(CORE_TESTING)
         implementation(FRAGMENT_KTX)
+    }
+
+    Navigation.run {
+        implementation(FRAGMENT_KTX)
+        implementation(UI_KTX)
     }
 
     testImplementation(JUnit.CORE)

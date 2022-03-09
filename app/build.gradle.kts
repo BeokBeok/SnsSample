@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared"))
     implementation(project(":auth"))
     implementation(project(":feature:home"))
     implementation(project(":feature:feed"))

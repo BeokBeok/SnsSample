@@ -14,7 +14,7 @@ internal class HomeRepositoryImpl @Inject constructor(
         if (response.ok == true) {
             response.toDomain()
         } else {
-            throw Throwable("response failed")
+            throw Throwable(response.error_msg)
         }
     }
 }
