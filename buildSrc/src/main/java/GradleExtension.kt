@@ -8,7 +8,7 @@ fun BaseAppModuleExtension.androidApplication() {
     defaultConfig {
         applicationId = "com.beok.ohousesample"
 
-        minSdk = 21
+        minSdk = 23
         targetSdk = 31
     }
 
@@ -22,7 +22,7 @@ fun LibraryExtension.androidLibrary() {
     compileSdk = 31
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 23
         targetSdk = 31
     }
 
