@@ -4,8 +4,9 @@ import com.beok.feed.data.model.CardsItem
 import com.beok.feed.data.remote.FeedAPI
 import com.beok.feed.domain.model.Card
 import com.beok.feed.domain.repository.FeedRepository
+import javax.inject.Inject
 
-internal class FeedRepositoryImpl(
+internal class FeedRepositoryImpl @Inject constructor(
     private val api: FeedAPI
 ) : FeedRepository {
 
