@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.beok.feed.domain.model.Card
 import com.beok.feed.domain.usecase.FetchFeedUseCase
+import com.beok.feed.presentation.model.PageInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -22,18 +23,26 @@ internal class FeedViewModel @Inject constructor(
     private val _feed = MutableLiveData<List<Card>>()
     val feed: LiveData<List<Card>> get() = _feed
 
+    private val pageInfo = PageInfo()
+
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         _state.value = FeedState.Error(throwable)
     }
 
-    fun fetchFeed() {
+    fun fetchFeed(isNext: Boolean = false) {
+        pageInfo.setup(isNext = isNext)
+        if (pageInfo.isEnd) return
+
         _state.value = FeedState.Loading
+        if (!isNext) _feed.value = emptyList()
+
         viewModelScope.launch(coroutineExceptionHandler) {
-            fetchFeedUseCase.execute()
+            fetchFeedUseCase.execute(page = pageInfo.value)
                 .onSuccess {
                     _state.value = FeedState.Loaded
                     _feed.value = (_feed.value?.toList() ?: emptyList())
                         .plus(it)
+                    pageInfo.update(isEnd = it.isEmpty())
                 }
                 .onFailure {
                     _state.value = FeedState.Error(it)

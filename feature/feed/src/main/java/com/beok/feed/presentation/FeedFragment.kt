@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.beok.feed.BR
 import com.beok.feed.R
 import com.beok.feed.databinding.FragmentFeedBinding
@@ -37,8 +38,26 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         setupUI()
+        setupListener()
         setupObserver()
         showContent()
+    }
+
+    private fun setupListener() {
+        binding.rvFeed.addOnScrollListener(
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    val isLoading = viewModel.state.value is FeedState.Loading
+                    if (dy < 0 || isLoading) return
+                    val bottomDirection = 1
+                    if (!recyclerView.canScrollVertically(bottomDirection)) {
+                        viewModel.fetchFeed(isNext = true)
+                    }
+                }
+            }
+        )
     }
 
     private fun setupObserver() {
@@ -66,6 +85,7 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(
 
     private fun setupUI() {
         binding.rvFeed.adapter = feedAdapter
+        binding.rvFeed.itemAnimator = null
     }
 
     private fun showContent() {
