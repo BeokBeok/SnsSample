@@ -19,4 +19,13 @@ dependencies {
         implementation(ADAPTERS)
         implementation(KOTLIN_CODEGEN)
     }
+
+    implementation(Coroutines.CORE)
+
+    testImplementation(JUnit.CORE)
+    testImplementation(Google.TRUTH)
+    Mock.run {
+        testImplementation(K)
+        testImplementation(WEB_SERVER)
+    }
 }

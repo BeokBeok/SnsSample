@@ -6,6 +6,7 @@ object AndroidX {
 
 object Google {
     const val MATERIAL = "com.google.android.material:material:1.5.0"
+    const val TRUTH = "com.google.truth:truth:1.1.3"
 }
 
 object JUnit {
@@ -25,4 +26,15 @@ object Moshi {
     const val KOTLIN = "com.squareup.moshi:moshi-kotlin:$VERSION"
     const val ADAPTERS = "com.squareup.moshi:moshi-adapters:$VERSION"
     const val KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen:$VERSION"
+}
+
+object Mock {
+    const val K = "io.mockk:mockk:1.12.0"
+    const val WEB_SERVER = "com.squareup.okhttp3:mockwebserver:4.9.3"
+}
+
+object Coroutines {
+    private const val VERSION = "1.6.0"
+
+    const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$VERSION"
 }
