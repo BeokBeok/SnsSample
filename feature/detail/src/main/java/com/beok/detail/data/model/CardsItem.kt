@@ -1,12 +1,12 @@
 package com.beok.detail.data.model
 
-import com.beok.detail.domain.model.RecommendCard
+import com.beok.detail.domain.model.Card
 import com.beok.shared.mapper.DataToDomainMapper
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-internal data class RecommendCardsItem(
+internal data class CardsItem(
 
     @Json(name = "user_id")
     val userId: Int? = null,
@@ -19,9 +19,9 @@ internal data class RecommendCardsItem(
 
     @Json(name = "id")
     val id: Int? = null
-) : DataToDomainMapper<RecommendCard> {
+) : DataToDomainMapper<Card> {
 
-    override fun toDomain(): RecommendCard = RecommendCard(
+    override fun toDomain(): Card = Card(
         userId = userId ?: -1,
         imgUrl = imgUrl ?: "",
         description = description ?: "",
