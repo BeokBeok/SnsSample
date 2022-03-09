@@ -1,4 +1,4 @@
-package com.beok.auth.data
+package com.beok.shared.mapper
 
 interface DataToDomainMapper<T> {
     fun toDomain(): T

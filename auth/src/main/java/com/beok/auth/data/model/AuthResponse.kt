@@ -1,6 +1,6 @@
 package com.beok.auth.data.model
 
-import com.beok.auth.data.DataToDomainMapper
+import com.beok.shared.mapper.DataToDomainMapper
 import com.beok.auth.domain.model.Auth
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
