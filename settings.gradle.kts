@@ -1,2 +1,7 @@
 rootProject.name = "OhouseSample"
-include(":app", ":auth", ":shared")
+include(
+    ":app",
+    ":auth",
+    ":shared",
+    ":feature:home"
+)
