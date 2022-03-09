@@ -8,6 +8,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared"))
+
     implementation(Google.MATERIAL)
 
     Network.run {
