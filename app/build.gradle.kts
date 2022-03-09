@@ -26,10 +26,12 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
+    implementation(project(":auth"))
     implementation(project(":feature:home"))
     implementation(project(":feature:feed"))
 

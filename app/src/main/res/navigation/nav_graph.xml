@@ -6,7 +6,17 @@
 
     <fragment
         android:id="@+id/fg_main"
-        android:name="com.beok.ohousesample.MainFragment">
+        android:name="com.beok.ohousesample.MainFragment"
+        android:label="@string/label_main">
+        <action
+            android:id="@+id/action_auth"
+            app:destination="@id/fg_auth" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fg_auth"
+        android:name="com.beok.auth.presentation.AuthFragment"
+        android:label="@string/label_auth">
 
     </fragment>
 
