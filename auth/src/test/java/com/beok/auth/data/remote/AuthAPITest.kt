@@ -38,7 +38,7 @@ class AuthAPITest {
     @Test
     fun `존재하는 아이디와 일치하는 비밀번호로_로그인하면_UserID를 얻습니다`() = runBlocking {
         // given
-        val request = AuthRequest(nickName = "ohouse", pwd = "pass")
+        val request = AuthRequest(nickname = "ohouse", password = "pass")
         val response = MockResponse().setBody(ID_PW_SUCCESS_JSON)
             .setResponseCode(200)
         val expected = AuthResponse(userId = 9, ok = true)
@@ -54,7 +54,7 @@ class AuthAPITest {
     @Test
     fun `존재하지 않는 아이디로_로그인하면_유저가 없습니다 에러 메시지를 받습니다`() = runBlocking {
         // given
-        val request = AuthRequest(nickName = "aa", pwd = "")
+        val request = AuthRequest(nickname = "aa", password = "")
         val response = MockResponse().setBody(INVALID_ID_JSON)
             .setResponseCode(200)
         val expected = AuthResponse(ok = false, error_msg = "유저가 없습니다.")
@@ -70,7 +70,7 @@ class AuthAPITest {
     @Test
     fun `존재하는 아이디와 일치하지 않는 비밀번호로_로그인하면_비밀번호가 틀립니다 에러 메시지를 받습니다`() = runBlocking {
         // given
-        val request = AuthRequest(nickName = "ohouse", pwd = "pas")
+        val request = AuthRequest(nickname = "ohouse", password = "pas")
         val response = MockResponse().setBody(INVALID_PW_JSON)
             .setResponseCode(200)
         val expected = AuthResponse(ok = false, error_msg = "비밀번호가 틀립니다.")

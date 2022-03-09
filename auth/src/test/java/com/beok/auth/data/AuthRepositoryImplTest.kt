@@ -27,7 +27,7 @@ class AuthRepositoryImplTest {
         val (nickName, password) = "ohouse" to "pass"
         val mockResponse = AuthResponse(userId = 9, ok = true)
         coEvery {
-            api.signIn(authRequest = AuthRequest(nickName = nickName, pwd = password))
+            api.signIn(authRequest = AuthRequest(nickname = nickName, password = password))
         } returns mockResponse
 
         // when
@@ -44,7 +44,7 @@ class AuthRepositoryImplTest {
         val (nickName, password) = "ohouse" to "pas"
         val errorMsg = "비밀번호가 틀립니다."
         coEvery {
-            api.signIn(authRequest = AuthRequest(nickName = nickName, pwd = password))
+            api.signIn(authRequest = AuthRequest(nickname = nickName, password = password))
         } throws Throwable(errorMsg)
 
         // when
@@ -62,7 +62,7 @@ class AuthRepositoryImplTest {
         val (nickName, password) = "ohous" to "pass"
         val errorMsg = "유저가 없습니다."
         coEvery {
-            api.signIn(authRequest = AuthRequest(nickName = nickName, pwd = password))
+            api.signIn(authRequest = AuthRequest(nickname = nickName, password = password))
         } throws Throwable(errorMsg)
 
         // when

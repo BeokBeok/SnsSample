@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.beok.auth.presentation.AuthViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,19 +18,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nickname"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/et_auth_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/btn_auth_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.signIn(etAuthNickname.getText().toString(), etAuthPassword.getText().toString())}"
             android:text="@string/login" />
 
     </LinearLayout>

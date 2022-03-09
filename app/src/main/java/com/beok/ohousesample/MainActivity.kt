@@ -6,7 +6,9 @@ import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.beok.ohousesample.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null

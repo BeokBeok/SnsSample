@@ -12,7 +12,7 @@ internal class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun signIn(nickName: String, password: String): Result<Auth> = runCatching {
         val response = api.signIn(
-            authRequest = AuthRequest(nickName = nickName, pwd = password)
+            authRequest = AuthRequest(nickname = nickName, password = password)
         )
         if (response.ok == true) {
             response.toDomain()
