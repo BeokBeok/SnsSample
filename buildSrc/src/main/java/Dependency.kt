@@ -38,3 +38,11 @@ object Coroutines {
 
     const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$VERSION"
 }
+
+object Hilt {
+    const val VERSION = "2.41"
+
+    const val ANDROID = "com.google.dagger:hilt-android:$VERSION"
+    const val COMPILER = "com.google.dagger:hilt-compiler:$VERSION"
+    const val CORE = "com.google.dagger:hilt-core:$VERSION"
+}

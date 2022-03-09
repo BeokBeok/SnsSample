@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -21,6 +22,11 @@ dependencies {
     }
 
     implementation(Coroutines.CORE)
+
+    Hilt.run {
+        implementation(CORE)
+        kapt(COMPILER)
+    }
 
     testImplementation(JUnit.CORE)
     testImplementation(Google.TRUTH)

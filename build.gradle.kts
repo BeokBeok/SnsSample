@@ -6,6 +6,12 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.6.10" apply false
 }
 
+buildscript {
+    dependencies {
+        classpath(ProjectConfig.HILT_ANDROID_GRADLE_PLUGIN)
+    }
+}
+
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
