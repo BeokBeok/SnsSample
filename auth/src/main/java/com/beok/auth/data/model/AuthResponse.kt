@@ -1,5 +1,7 @@
 package com.beok.auth.data.model
 
+import com.beok.auth.data.DataToDomainMapper
+import com.beok.auth.domain.model.Auth
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -13,4 +15,7 @@ internal data class AuthResponse(
 
     @Json(name = "error_msg")
     val error_msg: String? = null
-)
+) : DataToDomainMapper<Auth> {
+
+    override fun toDomain(): Auth = Auth(userId = userId ?: -1)
+}
