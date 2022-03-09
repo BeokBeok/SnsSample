@@ -1,0 +1,57 @@
+{
+  "popular_cards": [
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51663869974_8bb818b916.jpg",
+      "description": "-",
+      "id": 0
+    },
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51663409918_08c72a3655.jpg",
+      "description": "-",
+      "id": 1
+    },
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51663408148_e2bc293086.jpg",
+      "description": "Ford pickup truck",
+      "id": 2
+    },
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51663402473_6283563d5e.jpg",
+      "description": "15 Factory Street, Goffstown, NH Caved-In Building Interior",
+      "id": 3
+    },
+    {
+      "user_id": 0,
+      "img_url": "https://farm66.staticflickr.com/65535/51662360267_a3c443df83.jpg",
+      "description": "Smart Fortwo 450 aluminium sport pedals brushed or glossy chrome aluminium",
+      "id": 4
+    }
+  ],
+  "popular_users": [
+    {
+      "nickname": "aaaa",
+      "introduction": "a소개합니다.",
+      "id": 0
+    },
+    {
+      "nickname": "bbbb",
+      "introduction": "b소개합니다.",
+      "id": 1
+    },
+    {
+      "nickname": "cccc",
+      "introduction": "c소개합니다.",
+      "id": 2
+    },
+    {
+      "nickname": "dddd",
+      "introduction": "d소개합니다.",
+      "id": 3
+    }
+  ],
+  "ok": true
+}

@@ -21,12 +21,6 @@ dependencies {
         implementation(CONVERTER_MOSHI)
     }
 
-    Moshi.run {
-        implementation(KOTLIN)
-        implementation(ADAPTERS)
-        implementation(KOTLIN_CODEGEN)
-    }
-
     Coroutines.run {
         implementation(CORE)
         testImplementation(TEST)
@@ -51,6 +45,7 @@ dependencies {
 
     testImplementation(JUnit.CORE)
     testImplementation(Google.TRUTH)
+    testImplementation(Moshi.KOTLIN)
     Mock.run {
         testImplementation(K)
         testImplementation(WEB_SERVER)
