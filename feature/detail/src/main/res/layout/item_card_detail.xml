@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <import type="kotlin.Unit" />
+
+        <import type="com.beok.detail.domain.model.RecommendCard" />
+
+        <variable
+            name="item"
+            type="com.beok.detail.domain.model.RecommendCard" />
+
+        <variable
+            name="onClick"
+            type="Function1&lt;RecommendCard,Unit&gt;" />
+    </data>
+
+    <ImageView
+        bind_imageView_srcForGlide="@{item.imgUrl}"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:contentDescription="@null"
+        android:onClick="@{() -> onClick.invoke(item)}"
+        android:padding="12dp"
+        android:scaleType="fitXY"
+        tools:src="@android:drawable/star_big_on" />
+</layout>
