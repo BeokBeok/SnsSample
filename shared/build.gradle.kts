@@ -6,6 +6,12 @@ plugins {
 android {
     androidLibrary()
 
+    kotlinOptions {
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+        )
+    }
+
     buildFeatures {
         dataBinding = true
     }
@@ -13,4 +19,6 @@ android {
 
 dependencies {
     implementation(Google.MATERIAL)
+    implementation(JUnit.CORE)
+    implementation(Coroutines.TEST)
 }

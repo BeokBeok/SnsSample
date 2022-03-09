@@ -7,6 +7,7 @@ object AndroidX {
     const val APP_COMPAT = "androidx.appcompat:appcompat:1.4.1"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.3"
     const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:1.4.1"
+    const val CORE_TESTING = "androidx.arch.core:core-testing:2.1.0"
 }
 
 object Google {
@@ -42,6 +43,7 @@ object Coroutines {
     private const val VERSION = "1.6.0"
 
     const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$VERSION"
+    const val TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$VERSION"
 }
 
 object Hilt {
