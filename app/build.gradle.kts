@@ -66,6 +66,4 @@ dependencies {
         implementation(FRAGMENT_KTX)
         implementation(UI_KTX)
     }
-
-    testImplementation(JUnit.CORE)
 }
