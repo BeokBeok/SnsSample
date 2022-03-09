@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -50,6 +51,11 @@ dependencies {
     }
 
     implementation(Coroutines.CORE)
+
+    Navigation.run {
+        implementation(FRAGMENT_KTX)
+        implementation(UI_KTX)
+    }
 
     testImplementation(JUnit.CORE)
 }

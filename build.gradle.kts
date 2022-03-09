@@ -8,6 +8,7 @@ buildscript {
         classpath(ProjectConfig.GRADLE)
         classpath(ProjectConfig.KOTLIN_GRADLE_PLUGIN)
         classpath(ProjectConfig.HILT_ANDROID_GRADLE_PLUGIN)
+        classpath(ProjectConfig.NAVIGATION_SAFE_ARGS_GRADLE_PLUGIN)
     }
 }
 
