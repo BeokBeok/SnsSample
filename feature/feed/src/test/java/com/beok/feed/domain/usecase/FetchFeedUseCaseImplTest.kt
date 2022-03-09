@@ -22,7 +22,7 @@ class FetchFeedUseCaseImplTest {
         // given
 
         // when
-        useCase.fetchFeed()
+        useCase.execute()
 
         // then
         coVerify {

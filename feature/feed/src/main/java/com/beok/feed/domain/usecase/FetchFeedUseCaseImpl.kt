@@ -8,6 +8,6 @@ internal class FetchFeedUseCaseImpl @Inject constructor(
     private val repository: FeedRepository
 ) : FetchFeedUseCase {
 
-    override suspend fun fetchFeed(page: Int): Result<List<Card>> =
+    override suspend fun execute(page: Int): Result<List<Card>> =
         repository.fetchFeed(page = page)
 }
