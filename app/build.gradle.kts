@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -35,6 +34,7 @@ dependencies {
     implementation(project(":auth"))
     implementation(project(":feature:home"))
     implementation(project(":feature:feed"))
+    implementation(project(":feature:detail"))
 
     AndroidX.run {
         implementation(CORE_KTX)

@@ -11,13 +11,30 @@
         <action
             android:id="@+id/action_auth"
             app:destination="@id/fg_auth" />
+        <action
+            android:id="@+id/action_detail"
+            app:destination="@id/fg_detail">
+            <argument
+                android:name="id"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/fg_auth"
         android:name="com.beok.auth.presentation.AuthFragment"
-        android:label="@string/label_auth">
+        android:label="@string/label_auth" />
 
+    <fragment
+        android:id="@+id/fg_detail"
+        android:name="com.beok.detail.presentation.CardDetailFragment"
+        android:label="@string/label_detail">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detail"
+            app:destination="@id/fg_detail" />
     </fragment>
 
 </navigation>

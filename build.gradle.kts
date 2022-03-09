@@ -9,7 +9,6 @@ buildscript {
         classpath(ProjectConfig.KOTLIN_GRADLE_PLUGIN)
         classpath(ProjectConfig.HILT_ANDROID_GRADLE_PLUGIN)
         classpath(ProjectConfig.NAVIGATION_SAFE_ARGS_GRADLE_PLUGIN)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
     }
 }
 
