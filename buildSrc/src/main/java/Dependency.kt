@@ -67,3 +67,7 @@ object Glide {
     const val CORE = "com.github.bumptech.glide:glide:$GLIDE_VER"
     const val COMPILER = "com.github.bumptech.glide:compiler:$GLIDE_VER"
 }
+
+object DataStore {
+    const val PREFERENCES = "androidx.datastore:datastore-preferences:1.0.0"
+}

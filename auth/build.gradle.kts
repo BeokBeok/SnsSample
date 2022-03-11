@@ -43,6 +43,8 @@ dependencies {
         implementation(UI_KTX)
     }
 
+    implementation(DataStore.PREFERENCES)
+
     testImplementation(JUnit.CORE)
     testImplementation(Google.TRUTH)
     testImplementation(Moshi.KOTLIN)
