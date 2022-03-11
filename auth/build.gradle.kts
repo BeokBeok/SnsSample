@@ -38,11 +38,6 @@ dependencies {
 
     implementation(Google.MATERIAL)
 
-    Navigation.run {
-        implementation(FRAGMENT_KTX)
-        implementation(UI_KTX)
-    }
-
     implementation(DataStore.PREFERENCES)
 
     testImplementation(JUnit.CORE)

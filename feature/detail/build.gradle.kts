@@ -39,11 +39,6 @@ dependencies {
         testImplementation(CORE_TESTING)
     }
 
-    Navigation.run {
-        implementation(FRAGMENT_KTX)
-        implementation(UI_KTX)
-    }
-
     testImplementation(JUnit.CORE)
     testImplementation(Google.TRUTH)
     testImplementation(Moshi.KOTLIN)

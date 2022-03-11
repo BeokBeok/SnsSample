@@ -54,13 +54,6 @@ object Hilt {
     const val COMPILER = "com.google.dagger:hilt-compiler:$VERSION"
 }
 
-object Navigation {
-    const val VERSION = "2.4.1"
-
-    const val FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:$VERSION"
-    const val UI_KTX = "androidx.navigation:navigation-ui-ktx:$VERSION"
-}
-
 object Glide {
     private const val GLIDE_VER = "4.13.1"
 

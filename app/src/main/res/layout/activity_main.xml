@@ -26,14 +26,11 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_main_nav_host"
-        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/v_main_topbar"
-        app:navGraph="@navigation/nav_graph" />
+        app:layout_constraintTop_toBottomOf="@id/v_main_topbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

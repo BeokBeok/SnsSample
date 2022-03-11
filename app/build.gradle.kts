@@ -61,9 +61,4 @@ dependencies {
     }
 
     implementation(Coroutines.CORE)
-
-    Navigation.run {
-        implementation(FRAGMENT_KTX)
-        implementation(UI_KTX)
-    }
 }
