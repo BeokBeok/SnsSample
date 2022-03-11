@@ -21,11 +21,11 @@
 
     <ImageView
         bind_imageView_srcForGlide="@{item.imgUrl}"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:contentDescription="@null"
         android:onClick="@{() -> onClick.invoke(item)}"
-        android:padding="12dp"
         android:scaleType="fitXY"
         tools:src="@android:drawable/star_big_on" />
+
 </layout>

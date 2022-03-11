@@ -21,7 +21,8 @@
         <View
             android:id="@+id/v_home_border"
             android:layout_width="0dp"
-            android:layout_height="8dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="32dp"
             android:background="@android:color/holo_green_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

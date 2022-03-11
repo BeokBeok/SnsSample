@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -32,15 +33,16 @@
             android:scaleType="fitXY" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{item.description}" />
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@{item.description}"
+            tools:text="Test" />
 
         <View
             android:layout_width="wrap_content"
-            android:layout_height="8dp"
-            android:layout_marginTop="80dp"
+            android:layout_height="4dp"
             android:background="@android:color/holo_green_dark" />
 
     </LinearLayout>
+
 </layout>
