@@ -37,8 +37,15 @@ class CardDetailFragment : BaseFragment<FragmentCardDetailBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         setupUI()
+        setupListener()
         setupObserve()
         showContent()
+    }
+
+    private fun setupListener() {
+        binding.srlCardDetail.setOnRefreshListener {
+            showContent(isRefresh = true)
+        }
     }
 
     private fun setupUI() {
@@ -49,6 +56,7 @@ class CardDetailFragment : BaseFragment<FragmentCardDetailBinding>(
         viewModel.state.observe(viewLifecycleOwner) {
             when (it) {
                 is CardDetailState.Error -> {
+                    hideLoading()
                     Toast.makeText(
                         requireContext(),
                         it.throwable.message,
@@ -56,7 +64,7 @@ class CardDetailFragment : BaseFragment<FragmentCardDetailBinding>(
                     ).show()
                 }
                 is CardDetailState.Loaded -> {
-                    binding.pbCardDetail.isVisible = false
+                    hideLoading()
                     binding.item = it.item
                     cardDetailAdapter.replaceItems(it.item.recommendCards)
                 }
@@ -67,11 +75,19 @@ class CardDetailFragment : BaseFragment<FragmentCardDetailBinding>(
                     val action = MainFragmentDirections.actionDetail(it.id)
                     findNavController().navigate(action)
                 }
+                CardDetailState.Refreshing -> {
+                    binding.srlCardDetail.isRefreshing = true
+                }
             }
         }
     }
 
-    private fun showContent() {
-        viewModel.fetchCardDetail(args.id)
+    private fun hideLoading() {
+        binding.pbCardDetail.isVisible = false
+        binding.srlCardDetail.isRefreshing = false
+    }
+
+    private fun showContent(isRefresh: Boolean = false) {
+        viewModel.fetchCardDetail(id = args.id, isRefresh = isRefresh)
     }
 }

@@ -6,6 +6,8 @@ internal sealed class CardDetailState {
 
     object Loading : CardDetailState()
 
+    object Refreshing : CardDetailState()
+
     data class Loaded(val item: CardDetail) : CardDetailState()
 
     data class CardClick(val id: Int) : CardDetailState()

@@ -8,6 +8,7 @@ object AndroidX {
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.3"
     const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:1.4.1"
     const val CORE_TESTING = "androidx.arch.core:core-testing:2.1.0"
+    const val SWIPE_REFRESH_LAYOUT = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }
 
 object Google {

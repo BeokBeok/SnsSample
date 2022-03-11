@@ -22,8 +22,8 @@ internal class CardDetailViewModel @Inject constructor(
         _state.value = CardDetailState.Error(throwable)
     }
 
-    fun fetchCardDetail(id: Int) {
-        _state.value = CardDetailState.Loading
+    fun fetchCardDetail(id: Int, isRefresh: Boolean = false) {
+        _state.value = if (isRefresh) CardDetailState.Refreshing else CardDetailState.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             fetchCardDetailUseCase.execute(id = id)
                 .onSuccess {
