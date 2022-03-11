@@ -1,14 +1,16 @@
 package com.beok.auth.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.beok.auth.domain.model.Auth
+import com.beok.auth.domain.usecase.CheckSignInUseCase
 import com.beok.auth.domain.usecase.SignInUseCase
 import com.beok.auth.presentation.model.AuthState
 import com.beok.shared.test.MainCoroutineRule
 import com.beok.shared.test.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -24,11 +26,15 @@ class AuthViewModelTest {
     var mainCoroutineRule = MainCoroutineRule()
 
     private val signInUseCase: SignInUseCase = mockk(relaxed = true)
+    private val checkSignInUseCase: CheckSignInUseCase = mockk(relaxed = true)
     private lateinit var viewModel: AuthViewModel
 
     @Before
     fun setup() {
-        viewModel = AuthViewModel(signInUseCase = signInUseCase)
+        viewModel = AuthViewModel(
+            signInUseCase = signInUseCase,
+            checkSignInUseCase = checkSignInUseCase
+        )
     }
 
     @Test
@@ -75,10 +81,24 @@ class AuthViewModelTest {
         val (nickname, password) = "ohouse" to "pass"
         coEvery {
             signInUseCase.execute(nickname = nickname, password = password)
-        } returns Result.success(Auth(userId = 0))
+        } returns Result.success(true)
 
         // when
         viewModel.signIn(nickName = nickname, password = password)
+
+        // then
+        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.LogIn)
+    }
+
+    @Test
+    fun `로그인 상태이면_LogIn 상태가 된다`() {
+        // given
+        every {
+            checkSignInUseCase.execute()
+        } returns flow { emit(true) }
+
+        // when
+        viewModel.isSignIn()
 
         // then
         assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.LogIn)
