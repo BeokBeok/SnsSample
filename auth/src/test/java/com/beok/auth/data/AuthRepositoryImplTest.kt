@@ -1,5 +1,6 @@
 package com.beok.auth.data
 
+import com.beok.auth.data.local.AuthLocalDataSource
 import com.beok.auth.data.model.AuthRequest
 import com.beok.auth.data.model.AuthResponse
 import com.beok.auth.data.remote.AuthAPI
@@ -7,6 +8,7 @@ import com.beok.auth.domain.repository.AuthRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -14,15 +16,16 @@ import org.junit.Test
 class AuthRepositoryImplTest {
 
     private val api: AuthAPI = mockk(relaxed = true)
+    private val localDataSource: AuthLocalDataSource = mockk(relaxed = true)
     private lateinit var repository: AuthRepository
 
     @Before
     fun setup() {
-        repository = AuthRepositoryImpl(api = api)
+        repository = AuthRepositoryImpl(localDataSource = localDataSource, api = api)
     }
 
     @Test
-    fun `아이디와 일치하는 비밀번호로_로그인하면_UserID를 반환합니다`() = runBlocking {
+    fun `아이디와 일치하는 비밀번호로_로그인하면_성공합니다`() = runBlocking {
         // given
         val (nickName, password) = "ohouse" to "pass"
         val mockResponse = AuthResponse(userId = 9, ok = true)
@@ -35,7 +38,7 @@ class AuthRepositoryImplTest {
             .getOrNull()
 
         // then
-        assertThat(actual?.userId).isEqualTo(mockResponse.userId)
+        assertThat(actual).isTrue()
     }
 
     @Test
@@ -52,8 +55,7 @@ class AuthRepositoryImplTest {
             .exceptionOrNull()
 
         // then
-        assertThat(actual).hasMessageThat()
-            .contains(errorMsg)
+        assertThat(actual).hasMessageThat().contains(errorMsg)
     }
 
     @Test
@@ -70,8 +72,20 @@ class AuthRepositoryImplTest {
             .exceptionOrNull()
 
         // then
-        assertThat(actual).hasMessageThat()
-            .contains(errorMsg)
+        assertThat(actual).hasMessageThat().contains(errorMsg)
+    }
+
+    @Test
+    fun `로그인 여부를_확인합니다`() {
+        // given
+
+        // when
+        repository.isSignIn()
+
+        // then
+        verify {
+            localDataSource.isSignIn()
+        }
     }
 
 }

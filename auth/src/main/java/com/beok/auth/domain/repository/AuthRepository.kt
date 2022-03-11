@@ -1,7 +1,8 @@
 package com.beok.auth.domain.repository
 
-import com.beok.auth.domain.model.Auth
+import kotlinx.coroutines.flow.Flow
 
 internal interface AuthRepository {
-    suspend fun signIn(nickName: String, password: String): Result<Auth>
+    fun isSignIn(): Flow<Boolean>
+    suspend fun signIn(nickName: String, password: String): Result<Boolean>
 }
