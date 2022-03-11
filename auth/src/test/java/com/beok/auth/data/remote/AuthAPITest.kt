@@ -57,14 +57,14 @@ class AuthAPITest {
         val request = AuthRequest(nickname = "aa", password = "")
         val response = MockResponse().setBody(INVALID_ID_JSON)
             .setResponseCode(200)
-        val expected = AuthResponse(ok = false, error_msg = "유저가 없습니다.")
+        val expected = AuthResponse(ok = false, errorMsg = "유저가 없습니다.")
         server.enqueue(response)
 
         // when
         val actual = api.signIn(authRequest = request)
 
         // then
-        assertThat(actual.error_msg).isEqualTo(expected.error_msg)
+        assertThat(actual.errorMsg).isEqualTo(expected.errorMsg)
     }
 
     @Test
@@ -73,14 +73,14 @@ class AuthAPITest {
         val request = AuthRequest(nickname = "ohouse", password = "pas")
         val response = MockResponse().setBody(INVALID_PW_JSON)
             .setResponseCode(200)
-        val expected = AuthResponse(ok = false, error_msg = "비밀번호가 틀립니다.")
+        val expected = AuthResponse(ok = false, errorMsg = "비밀번호가 틀립니다.")
         server.enqueue(response)
 
         // when
         val actual = api.signIn(authRequest = request)
 
         // then
-        assertThat(actual.error_msg).isEqualTo(expected.error_msg)
+        assertThat(actual.errorMsg).isEqualTo(expected.errorMsg)
     }
 
     companion object {
