@@ -64,12 +64,16 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(
                 }
             }
         )
+        binding.srlFeed.setOnRefreshListener {
+            showContent(isRefresh = true)
+        }
     }
 
     private fun setupObserver() {
         viewModel.state.observe(viewLifecycleOwner) {
             when (it) {
                 is FeedState.Error -> {
+                    hideLoading()
                     Toast.makeText(
                         requireContext(),
                         it.throwable.message,
@@ -77,7 +81,7 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(
                     ).show()
                 }
                 FeedState.Loaded -> {
-                    binding.pbFeed.isVisible = false
+                    hideLoading()
                 }
                 FeedState.Loading -> {
                     binding.pbFeed.isVisible = true
@@ -86,6 +90,9 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(
                     val action = MainFragmentDirections.actionDetail(it.id)
                     findNavController().navigate(action)
                 }
+                FeedState.Refreshing -> {
+                    binding.srlFeed.isRefreshing = true
+                }
             }
         }
         viewModel.feed.observe(viewLifecycleOwner) {
@@ -93,13 +100,18 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(
         }
     }
 
+    private fun hideLoading() {
+        binding.pbFeed.isVisible = false
+        binding.srlFeed.isRefreshing = false
+    }
+
     private fun setupUI() {
         binding.rvFeed.adapter = feedAdapter
         binding.rvFeed.itemAnimator = null
     }
 
-    private fun showContent() {
-        viewModel.fetchFeed()
+    private fun showContent(isRefresh: Boolean = false) {
+        viewModel.fetchFeed(isRefresh = isRefresh)
     }
 
     companion object {

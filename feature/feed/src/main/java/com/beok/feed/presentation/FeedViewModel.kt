@@ -29,11 +29,11 @@ internal class FeedViewModel @Inject constructor(
         _state.value = FeedState.Error(throwable)
     }
 
-    fun fetchFeed(isNext: Boolean = false) {
+    fun fetchFeed(isNext: Boolean = false, isRefresh: Boolean = false) {
         pageInfo.setup(isNext = isNext)
         if (pageInfo.isEnd) return
 
-        _state.value = FeedState.Loading
+        _state.value = if (isRefresh) FeedState.Refreshing else FeedState.Loading
         if (!isNext) _feed.value = emptyList()
 
         viewModelScope.launch(coroutineExceptionHandler) {

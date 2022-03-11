@@ -4,6 +4,8 @@ internal sealed class FeedState {
 
     object Loading : FeedState()
 
+    object Refreshing : FeedState()
+
     object Loaded : FeedState()
 
     data class CardClick(val id: Int) : FeedState()
