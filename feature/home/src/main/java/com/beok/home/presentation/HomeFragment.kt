@@ -42,8 +42,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         setupUI()
+        setupListener()
         setupObserver()
         showContent()
+    }
+
+    private fun setupListener() {
+        binding.srlHome.setOnRefreshListener {
+            showContent(isRefresh = true)
+        }
     }
 
     private fun setupUI() {
@@ -55,6 +62,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         viewModel.state.observe(viewLifecycleOwner) {
             when (it) {
                 is HomeState.Error -> {
+                    hideLoading()
                     Toast.makeText(
                         requireContext(),
                         it.throwable.message,
@@ -62,7 +70,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                     ).show()
                 }
                 is HomeState.Loaded -> {
-                    binding.pbHome.isVisible = false
+                    hideLoading()
                     cardAdapter.replaceItems(it.items.popularCards)
                     userAdapter.replaceItems(it.items.popularUsers)
                 }
@@ -73,12 +81,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                     val action = MainFragmentDirections.actionDetail(it.id)
                     findNavController().navigate(action)
                 }
+                HomeState.Refreshing -> {
+                    binding.srlHome.isRefreshing = true
+                }
             }
         }
     }
 
-    private fun showContent() {
-        viewModel.fetchHome()
+    private fun hideLoading() {
+        binding.pbHome.isVisible = false
+        binding.srlHome.isRefreshing = false
+    }
+
+    private fun showContent(isRefresh: Boolean = false) {
+        viewModel.fetchHome(isRefresh)
     }
 
     companion object {

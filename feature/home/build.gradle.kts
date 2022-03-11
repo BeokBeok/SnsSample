@@ -34,8 +34,9 @@ dependencies {
     }
 
     AndroidX.run {
-        testImplementation(CORE_TESTING)
         implementation(FRAGMENT_KTX)
+        implementation(SWIPE_REFRESH_LAYOUT)
+        testImplementation(CORE_TESTING)
     }
 
     Navigation.run {

@@ -22,8 +22,8 @@ internal class HomeViewModel @Inject constructor(
         _state.value = HomeState.Error(throwable)
     }
 
-    fun fetchHome() = viewModelScope.launch(coroutineExceptionHandler) {
-        _state.value = HomeState.Loading
+    fun fetchHome(isRefresh: Boolean = false) = viewModelScope.launch(coroutineExceptionHandler) {
+        _state.value = if (isRefresh) HomeState.Refreshing else HomeState.Loading
         fetchHomeUseCase.execute()
             .onSuccess {
                 _state.value = HomeState.Loaded(it)
