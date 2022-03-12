@@ -15,6 +15,7 @@ android {
 
 dependencies {
     implementation(project(":shared"))
+    implementation(project(":navigation"))
 
     Network.run {
         implementation(RETROFIT)

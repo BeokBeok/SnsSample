@@ -9,8 +9,8 @@ import com.beok.auth.presentation.AuthViewModel
 import com.beok.auth.presentation.model.AuthState
 import com.beok.detail.presentation.CardDetailFragment
 import com.beok.ohousesample.databinding.ActivityMainBinding
-import com.beok.shared.navigation.NavigationState
-import com.beok.shared.navigation.NavigationViewModel
+import com.beok.navigation.NavigationState
+import com.beok.navigation.NavigationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

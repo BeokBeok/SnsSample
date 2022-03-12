@@ -16,8 +16,8 @@ import com.beok.feed.presentation.model.FeedState
 import com.beok.shared.base.BaseFragment
 import com.beok.shared.base.BaseListAdapter
 import com.beok.shared.model.ClickAction
-import com.beok.shared.navigation.NavigationState
-import com.beok.shared.navigation.NavigationViewModel
+import com.beok.navigation.NavigationState
+import com.beok.navigation.NavigationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

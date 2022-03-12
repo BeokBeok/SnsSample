@@ -15,8 +15,8 @@ import com.beok.detail.presentation.model.CardDetailState
 import com.beok.shared.base.BaseAdapter
 import com.beok.shared.base.BaseFragment
 import com.beok.shared.model.ClickAction
-import com.beok.shared.navigation.NavigationState
-import com.beok.shared.navigation.NavigationViewModel
+import com.beok.navigation.NavigationState
+import com.beok.navigation.NavigationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
