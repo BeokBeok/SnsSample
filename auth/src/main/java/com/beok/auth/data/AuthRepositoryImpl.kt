@@ -25,4 +25,8 @@ internal class AuthRepositoryImpl @Inject constructor(
         localDataSource.signIn(userID = response.userId ?: -1)
         response.ok
     }
+
+    override suspend fun signOut(): Result<Unit> = runCatching {
+        localDataSource.signOut()
+    }
 }

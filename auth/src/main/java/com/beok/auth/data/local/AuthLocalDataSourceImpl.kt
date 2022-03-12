@@ -25,6 +25,12 @@ internal class AuthLocalDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun signOut() {
+        dataStore.edit { preferences ->
+            preferences.clear()
+        }
+    }
+
     companion object {
         private val PREFERENCES_KEY_USER_ID = intPreferencesKey("user_id")
     }

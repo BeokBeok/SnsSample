@@ -4,6 +4,8 @@ import com.beok.auth.domain.usecase.CheckSignInUseCase
 import com.beok.auth.domain.usecase.CheckSignInUseCaseImpl
 import com.beok.auth.domain.usecase.SignInUseCase
 import com.beok.auth.domain.usecase.SignInUseCaseImpl
+import com.beok.auth.domain.usecase.SignOutUseCase
+import com.beok.auth.domain.usecase.SignOutUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,4 +23,8 @@ internal interface AuthUseCaseModule {
     @Binds
     @Singleton
     fun bindsCheckSignInUseCase(impl: CheckSignInUseCaseImpl): CheckSignInUseCase
+
+    @Binds
+    @Singleton
+    fun bindsSignOutUseCase(impl: SignOutUseCaseImpl): SignOutUseCase
 }

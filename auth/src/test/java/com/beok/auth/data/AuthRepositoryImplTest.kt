@@ -7,6 +7,7 @@ import com.beok.auth.data.remote.AuthAPI
 import com.beok.auth.domain.repository.AuthRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
@@ -88,4 +89,16 @@ class AuthRepositoryImplTest {
         }
     }
 
+    @Test
+    fun `로그아웃_합니다`() = runBlocking {
+        // given
+
+        // when
+        repository.signOut()
+
+        // then
+        coVerify {
+            localDataSource.signOut()
+        }
+    }
 }

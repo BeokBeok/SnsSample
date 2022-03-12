@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 internal interface AuthLocalDataSource {
     fun isSignIn(): Flow<Boolean>
     suspend fun signIn(userID: Int)
+    suspend fun signOut()
 }
