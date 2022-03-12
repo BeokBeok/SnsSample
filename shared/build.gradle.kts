@@ -19,7 +19,11 @@ android {
 }
 
 dependencies {
-    implementation(Google.MATERIAL)
+    Google.run {
+        implementation(MATERIAL)
+        testImplementation(TRUTH)
+    }
+
     implementation(JUnit.CORE)
     implementation(Coroutines.TEST)
 
@@ -27,7 +31,4 @@ dependencies {
         implementation(CORE)
         kapt(COMPILER)
     }
-
-    testImplementation(JUnit.CORE)
-    testImplementation(Google.TRUTH)
 }

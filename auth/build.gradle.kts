@@ -37,12 +37,14 @@ dependencies {
         implementation(FRAGMENT_KTX)
     }
 
-    implementation(Google.MATERIAL)
+    Google.run {
+        implementation(MATERIAL)
+        testImplementation(TRUTH)
+    }
 
     implementation(DataStore.PREFERENCES)
 
     testImplementation(JUnit.CORE)
-    testImplementation(Google.TRUTH)
     testImplementation(Moshi.KOTLIN)
     Mock.run {
         testImplementation(K)

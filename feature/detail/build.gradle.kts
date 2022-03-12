@@ -17,7 +17,10 @@ dependencies {
     implementation(project(":shared"))
     implementation(project(":navigation"))
 
-    implementation(Google.MATERIAL)
+    Google.run {
+        implementation(MATERIAL)
+        testImplementation(TRUTH)
+    }
 
     Network.run {
         implementation(RETROFIT)
@@ -41,7 +44,6 @@ dependencies {
     }
 
     testImplementation(JUnit.CORE)
-    testImplementation(Google.TRUTH)
     testImplementation(Moshi.KOTLIN)
     Mock.run {
         testImplementation(K)
