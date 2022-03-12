@@ -76,23 +76,26 @@ class MainActivity : AppCompatActivity() {
             val navigation = it.getContentIfNotHandled() ?: return@observe
             when (navigation) {
                 is NavigationState.CardDetail -> {
-                    val cardDetailFragment =
-                        supportFragmentManager.findFragmentByTag(CardDetailFragment.TAG)
-                            ?: CardDetailFragment.newInstance(id = navigation.id)
-                    addFragment(cardDetailFragment)
+                    addFragment(
+                        fragment = CardDetailFragment.newInstance(id = navigation.id),
+                        tag = CardDetailFragment.TAG
+                    )
                 }
                 NavigationState.Auth -> {
-                    val authFragment = supportFragmentManager.findFragmentByTag(AuthFragment.TAG)
-                        ?: AuthFragment.newInstance()
-                    addFragment(authFragment)
+                    if (supportFragmentManager.findFragmentByTag(AuthFragment.TAG) == null) {
+                        addFragment(
+                            fragment = AuthFragment.newInstance(),
+                            tag = AuthFragment.TAG
+                        )
+                    }
                 }
             }
         }
     }
 
-    private fun addFragment(fragment: Fragment) {
+    private fun addFragment(fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction()
-            .add(R.id.fcv_main_nav_host, fragment)
+            .add(R.id.fcv_main_nav_host, fragment, tag)
             .addToBackStack(null)
             .commit()
     }
