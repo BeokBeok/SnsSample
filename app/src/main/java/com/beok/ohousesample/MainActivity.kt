@@ -8,9 +8,9 @@ import com.beok.auth.presentation.AuthFragment
 import com.beok.auth.presentation.AuthViewModel
 import com.beok.auth.presentation.model.AuthState
 import com.beok.detail.presentation.CardDetailFragment
-import com.beok.ohousesample.databinding.ActivityMainBinding
 import com.beok.navigation.NavigationState
 import com.beok.navigation.NavigationViewModel
+import com.beok.ohousesample.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,9 +47,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showContent() {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fcv_main_nav_host, MainFragment.newInstance())
-            .commit()
         authViewModel.isSignIn()
     }
 
@@ -79,8 +76,9 @@ class MainActivity : AppCompatActivity() {
             val navigation = it.getContentIfNotHandled() ?: return@observe
             when (navigation) {
                 is NavigationState.CardDetail -> {
-                    val cardDetailFragment = supportFragmentManager.findFragmentByTag(CardDetailFragment.TAG)
-                        ?: CardDetailFragment.newInstance(id = navigation.id)
+                    val cardDetailFragment =
+                        supportFragmentManager.findFragmentByTag(CardDetailFragment.TAG)
+                            ?: CardDetailFragment.newInstance(id = navigation.id)
                     addFragment(cardDetailFragment)
                 }
                 NavigationState.Auth -> {

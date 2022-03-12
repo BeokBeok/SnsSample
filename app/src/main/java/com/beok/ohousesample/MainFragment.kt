@@ -9,9 +9,7 @@ import com.beok.feed.presentation.FeedFragment
 import com.beok.home.presentation.HomeFragment
 import com.beok.ohousesample.databinding.FragmentMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private var binding: FragmentMainBinding? = null
@@ -53,9 +51,5 @@ class MainFragment : Fragment() {
                 tab.text = tabTitleGroup[position]
             }.attach()
         }
-    }
-
-    companion object {
-        fun newInstance(): MainFragment = MainFragment()
     }
 }
