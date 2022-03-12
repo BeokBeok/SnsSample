@@ -1,7 +1,6 @@
 package com.beok.home.domain.usecase
 
 import com.beok.home.domain.repository.HomeRepository
-import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking

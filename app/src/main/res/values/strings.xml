@@ -7,5 +7,4 @@
     <string name="login">로그인</string>
     <string name="logout">로그아웃</string>
 
-    <string name="label_auth">auth</string>
 </resources>

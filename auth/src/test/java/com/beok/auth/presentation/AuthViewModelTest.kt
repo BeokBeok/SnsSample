@@ -8,7 +8,6 @@ import com.beok.auth.presentation.model.AuthState
 import com.beok.shared.test.MainCoroutineRule
 import com.beok.shared.test.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
-import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk

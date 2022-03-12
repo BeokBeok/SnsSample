@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="label_main">main</string>
-    <string name="label_auth">auth</string>
-    <string name="label_home">home</string>
-    <string name="label_feed">feed</string>
-    <string name="label_detail">detail</string>
-</resources>
