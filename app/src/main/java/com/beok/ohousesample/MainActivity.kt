@@ -1,15 +1,14 @@
 package com.beok.ohousesample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.beok.auth.presentation.AuthFragment
 import com.beok.auth.presentation.AuthViewModel
 import com.beok.auth.presentation.model.AuthState
 import com.beok.detail.presentation.CardDetailFragment
 import com.beok.ohousesample.databinding.ActivityMainBinding
-import com.beok.ohousesample.databinding.FragmentMainBinding
 import com.beok.shared.navigation.NavigationState
 import com.beok.shared.navigation.NavigationViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,7 +61,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObserver() {
         authViewModel.state.observe(this) {
-            when (it) {
+            val authState = it.getContentIfNotHandled() ?: return@observe
+            when (authState) {
                 AuthState.EmptyNickname,
                 AuthState.EmptyPassword,
                 is AuthState.Error -> Unit
