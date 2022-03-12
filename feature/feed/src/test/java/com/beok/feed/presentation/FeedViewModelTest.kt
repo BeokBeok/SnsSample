@@ -3,6 +3,7 @@ package com.beok.feed.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.beok.feed.domain.model.Card
 import com.beok.feed.domain.usecase.FetchFeedUseCase
+import com.beok.feed.presentation.model.FeedState
 import com.beok.shared.test.MainCoroutineRule
 import com.beok.shared.test.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat

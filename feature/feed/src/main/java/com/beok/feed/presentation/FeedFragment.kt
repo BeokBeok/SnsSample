@@ -12,6 +12,7 @@ import com.beok.feed.BR
 import com.beok.feed.R
 import com.beok.feed.databinding.FragmentFeedBinding
 import com.beok.feed.domain.model.Card
+import com.beok.feed.presentation.model.FeedState
 import com.beok.shared.base.BaseFragment
 import com.beok.shared.base.BaseListAdapter
 import com.beok.shared.model.ClickAction

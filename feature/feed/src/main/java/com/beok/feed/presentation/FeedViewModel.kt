@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.beok.feed.domain.model.Card
 import com.beok.feed.domain.usecase.FetchFeedUseCase
+import com.beok.feed.presentation.model.FeedState
 import com.beok.feed.presentation.model.PageInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.beok.home.presentation
+package com.beok.home.presentation.model
 
 import com.beok.home.domain.model.Home
 

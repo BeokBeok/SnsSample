@@ -11,6 +11,7 @@ import com.beok.detail.BR
 import com.beok.detail.R
 import com.beok.detail.databinding.FragmentCardDetailBinding
 import com.beok.detail.domain.model.RecommendCard
+import com.beok.detail.presentation.model.CardDetailState
 import com.beok.shared.base.BaseAdapter
 import com.beok.shared.base.BaseFragment
 import com.beok.shared.model.ClickAction

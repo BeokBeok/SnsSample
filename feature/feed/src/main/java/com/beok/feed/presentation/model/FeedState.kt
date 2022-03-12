@@ -1,4 +1,4 @@
-package com.beok.feed.presentation
+package com.beok.feed.presentation.model
 
 internal sealed class FeedState {
 

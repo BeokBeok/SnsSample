@@ -11,6 +11,7 @@ import com.beok.home.R
 import com.beok.home.databinding.FragmentHomeBinding
 import com.beok.home.domain.model.PopularCard
 import com.beok.home.domain.model.PopularUser
+import com.beok.home.presentation.model.HomeState
 import com.beok.shared.base.BaseAdapter
 import com.beok.shared.base.BaseFragment
 import com.beok.shared.model.ClickAction

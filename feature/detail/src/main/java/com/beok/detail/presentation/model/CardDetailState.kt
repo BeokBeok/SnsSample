@@ -1,4 +1,4 @@
-package com.beok.detail.presentation
+package com.beok.detail.presentation.model
 
 import com.beok.detail.domain.model.CardDetail
 

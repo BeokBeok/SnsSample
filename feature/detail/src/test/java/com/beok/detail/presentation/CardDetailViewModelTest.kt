@@ -6,6 +6,7 @@ import com.beok.detail.domain.model.Card
 import com.beok.detail.domain.model.CardDetail
 import com.beok.detail.domain.model.User
 import com.beok.detail.domain.usecase.FetchCardDetailUseCase
+import com.beok.detail.presentation.model.CardDetailState
 import com.beok.shared.test.MainCoroutineRule
 import com.beok.shared.test.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat

@@ -3,6 +3,7 @@ package com.beok.home.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.beok.home.domain.model.Home
 import com.beok.home.domain.usecase.FetchHomeUseCase
+import com.beok.home.presentation.model.HomeState
 import com.beok.shared.test.MainCoroutineRule
 import com.beok.shared.test.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
