@@ -1,4 +1,4 @@
-package com.beok.shared.navigation
+package com.beok.navigation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

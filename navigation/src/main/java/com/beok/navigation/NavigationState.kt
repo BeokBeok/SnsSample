@@ -1,4 +1,4 @@
-package com.beok.shared.navigation
+package com.beok.navigation
 
 sealed class NavigationState {
 
