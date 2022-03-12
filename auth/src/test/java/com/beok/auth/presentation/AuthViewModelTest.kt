@@ -49,7 +49,8 @@ class AuthViewModelTest {
         viewModel.signIn(nickName = "", password = "")
 
         // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.EmptyNickname)
+        assertThat(viewModel.state.getOrAwaitValue().getContentIfNotHandled())
+            .isEqualTo(AuthState.EmptyNickname)
     }
 
     @Test
@@ -60,7 +61,8 @@ class AuthViewModelTest {
         viewModel.signIn(nickName = "ohouse", password = "")
 
         // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.EmptyPassword)
+        assertThat(viewModel.state.getOrAwaitValue().getContentIfNotHandled())
+            .isEqualTo(AuthState.EmptyPassword)
     }
 
     @Test
@@ -76,7 +78,8 @@ class AuthViewModelTest {
         viewModel.signIn(nickName = nickName, password = password)
 
         // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.Error(throwable))
+        assertThat(viewModel.state.getOrAwaitValue().getContentIfNotHandled())
+            .isEqualTo(AuthState.Error(throwable))
     }
 
     @Test
@@ -95,7 +98,8 @@ class AuthViewModelTest {
         viewModel.isSignIn()
 
         // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.LogIn)
+        assertThat(viewModel.state.getOrAwaitValue().getContentIfNotHandled())
+            .isEqualTo(AuthState.LogIn)
     }
 
     @Test
@@ -109,7 +113,8 @@ class AuthViewModelTest {
         viewModel.isSignIn()
 
         // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.LogIn)
+        assertThat(viewModel.state.getOrAwaitValue().getContentIfNotHandled())
+            .isEqualTo(AuthState.LogIn)
     }
 
     @Test
@@ -123,7 +128,8 @@ class AuthViewModelTest {
         viewModel.isSignIn()
 
         // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.NotLogIn)
+        assertThat(viewModel.state.getOrAwaitValue().getContentIfNotHandled())
+            .isEqualTo(AuthState.NotLogIn)
     }
 
     @Test
@@ -141,6 +147,7 @@ class AuthViewModelTest {
         viewModel.isSignIn()
 
         // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.NotLogIn)
+        assertThat(viewModel.state.getOrAwaitValue().getContentIfNotHandled())
+            .isEqualTo(AuthState.NotLogIn)
     }
 }
