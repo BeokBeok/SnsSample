@@ -33,8 +33,8 @@ dependencies {
     }
 
     AndroidX.run {
-        testImplementation(CORE_TESTING)
         implementation(FRAGMENT_KTX)
+        testImplementation(CORE_TESTING)
     }
 
     Google.run {
@@ -46,6 +46,7 @@ dependencies {
 
     testImplementation(JUnit.CORE)
     testImplementation(Moshi.KOTLIN)
+
     Mock.run {
         testImplementation(K)
         testImplementation(WEB_SERVER)
