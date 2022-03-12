@@ -3,11 +3,13 @@ package com.beok.ohousesample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import com.beok.auth.presentation.AuthFragment
 import com.beok.auth.presentation.AuthViewModel
 import com.beok.auth.presentation.model.AuthState
 import com.beok.detail.presentation.CardDetailFragment
 import com.beok.ohousesample.databinding.ActivityMainBinding
+import com.beok.ohousesample.databinding.FragmentMainBinding
 import com.beok.shared.navigation.NavigationState
 import com.beok.shared.navigation.NavigationViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -79,20 +81,21 @@ class MainActivity : AppCompatActivity() {
                 is NavigationState.CardDetail -> {
                     val cardDetailFragment = supportFragmentManager.findFragmentByTag(CardDetailFragment.TAG)
                         ?: CardDetailFragment.newInstance(id = navigation.id)
-                    supportFragmentManager.beginTransaction()
-                        .add(R.id.fcv_main_nav_host, cardDetailFragment)
-                        .addToBackStack(null)
-                        .commit()
+                    addFragment(cardDetailFragment)
                 }
                 NavigationState.Auth -> {
                     val authFragment = supportFragmentManager.findFragmentByTag(AuthFragment.TAG)
                         ?: AuthFragment.newInstance()
-                    supportFragmentManager.beginTransaction()
-                        .add(R.id.fcv_main_nav_host, authFragment)
-                        .addToBackStack(null)
-                        .commit()
+                    addFragment(authFragment)
                 }
             }
         }
+    }
+
+    private fun addFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fcv_main_nav_host, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
