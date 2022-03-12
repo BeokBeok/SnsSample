@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.beok.feed.BR
 import com.beok.feed.R
 import com.beok.feed.databinding.FragmentFeedBinding
 import com.beok.feed.domain.model.Card
-import com.beok.ohousesample.MainFragmentDirections
 import com.beok.shared.base.BaseFragment
 import com.beok.shared.base.BaseListAdapter
 import com.beok.shared.model.ClickAction
+import com.beok.shared.navigation.NavigationState
+import com.beok.shared.navigation.NavigationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,12 +24,13 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(
     layoutResourceID = R.layout.fragment_feed
 ) {
     private val viewModel by viewModels<FeedViewModel>()
+    private val navViewModel by activityViewModels<NavigationViewModel>()
     private val feedAdapter by lazy {
         BaseListAdapter(
             layoutResourceID = R.layout.item_feed,
             bindingID = BR.item,
             clickAction = ClickAction(BR.onClick) {
-                viewModel.onClickCardId(it.id)
+                navViewModel.navigate(navigationState = NavigationState.CardDetail(it.id))
             },
             diffUtil = object : DiffUtil.ItemCallback<Card>() {
                 override fun areItemsTheSame(oldItem: Card, newItem: Card): Boolean =
@@ -85,10 +87,6 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(
                 }
                 FeedState.Loading -> {
                     binding.pbFeed.isVisible = true
-                }
-                is FeedState.CardClick -> {
-                    val action = MainFragmentDirections.actionDetail(it.id)
-                    findNavController().navigate(action)
                 }
                 FeedState.Refreshing -> {
                     binding.srlFeed.isRefreshing = true

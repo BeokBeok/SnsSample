@@ -2,6 +2,7 @@ package com.beok.detail.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.beok.detail.domain.usecase.FetchCardDetailUseCase
@@ -12,17 +13,22 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class CardDetailViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
     private val fetchCardDetailUseCase: FetchCardDetailUseCase
 ) : ViewModel() {
 
     private val _state = MutableLiveData<CardDetailState>()
     val state: LiveData<CardDetailState> get() = _state
 
+    private val cardId by lazy {
+        savedStateHandle.get(BUNDLE_KEY_CARD_ID) as? Int ?: -1
+    }
+
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         _state.value = CardDetailState.Error(throwable)
     }
 
-    fun fetchCardDetail(id: Int, isRefresh: Boolean = false) {
+    fun fetchCardDetail(id: Int = cardId, isRefresh: Boolean = false) {
         _state.value = if (isRefresh) CardDetailState.Refreshing else CardDetailState.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             fetchCardDetailUseCase.execute(id = id)
@@ -35,7 +41,7 @@ internal class CardDetailViewModel @Inject constructor(
         }
     }
 
-    fun onClickCardId(id: Int) {
-        _state.value = CardDetailState.CardClick(id)
+    companion object {
+        private const val BUNDLE_KEY_CARD_ID = "bundle_key_card_id"
     }
 }

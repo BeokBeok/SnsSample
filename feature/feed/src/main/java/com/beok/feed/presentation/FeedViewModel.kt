@@ -49,8 +49,4 @@ internal class FeedViewModel @Inject constructor(
                 }
         }
     }
-
-    fun onClickCardId(id: Int) {
-        _state.value = FeedState.CardClick(id)
-    }
 }

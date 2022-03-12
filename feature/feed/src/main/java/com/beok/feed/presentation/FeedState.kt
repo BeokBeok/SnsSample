@@ -8,7 +8,5 @@ internal sealed class FeedState {
 
     object Loaded : FeedState()
 
-    data class CardClick(val id: Int) : FeedState()
-
     data class Error(val throwable: Throwable) : FeedState()
 }

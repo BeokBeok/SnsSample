@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.beok.home.BR
 import com.beok.home.R
 import com.beok.home.databinding.FragmentHomeBinding
 import com.beok.home.domain.model.PopularCard
 import com.beok.home.domain.model.PopularUser
-import com.beok.ohousesample.MainFragmentDirections
 import com.beok.shared.base.BaseAdapter
 import com.beok.shared.base.BaseFragment
 import com.beok.shared.model.ClickAction
+import com.beok.shared.navigation.NavigationState
+import com.beok.shared.navigation.NavigationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,12 +23,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     layoutResourceID = R.layout.fragment_home
 ) {
     private val viewModel by viewModels<HomeViewModel>()
+    private val navViewModel by activityViewModels<NavigationViewModel>()
     private val cardAdapter by lazy {
         BaseAdapter<PopularCard>(
             layoutResourceID = R.layout.item_card,
             bindingID = BR.item,
             clickAction = ClickAction(bindingID = BR.onClick) {
-                viewModel.onClickCardId(it.id)
+                navViewModel.navigate(NavigationState.CardDetail(it.id))
             }
         )
     }
@@ -76,10 +78,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 }
                 HomeState.Loading -> {
                     binding.pbHome.isVisible = true
-                }
-                is HomeState.CardClick -> {
-                    val action = MainFragmentDirections.actionDetail(it.id)
-                    findNavController().navigate(action)
                 }
                 HomeState.Refreshing -> {
                     binding.srlHome.isRefreshing = true

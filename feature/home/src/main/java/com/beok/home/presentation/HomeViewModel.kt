@@ -32,8 +32,4 @@ internal class HomeViewModel @Inject constructor(
                 _state.value = HomeState.Error(it)
             }
     }
-
-    fun onClickCardId(id: Int) {
-        _state.value = HomeState.CardClick(id)
-    }
 }

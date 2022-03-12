@@ -1,6 +1,7 @@
 package com.beok.detail.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.SavedStateHandle
 import com.beok.detail.domain.model.Card
 import com.beok.detail.domain.model.CardDetail
 import com.beok.detail.domain.model.User
@@ -25,11 +26,15 @@ class CardDetailViewModelTest {
     var mainCoroutineRule = MainCoroutineRule()
 
     private val fetchCardDetailUseCase: FetchCardDetailUseCase = mockk(relaxed = true)
+    private val savedStateHandle: SavedStateHandle = mockk()
     private lateinit var viewModel: CardDetailViewModel
 
     @Before
     fun setup() {
-        viewModel = CardDetailViewModel(fetchCardDetailUseCase = fetchCardDetailUseCase)
+        viewModel = CardDetailViewModel(
+            savedStateHandle = savedStateHandle,
+            fetchCardDetailUseCase = fetchCardDetailUseCase
+        )
     }
 
     @Test
@@ -69,16 +74,5 @@ class CardDetailViewModelTest {
 
         // then
         assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(CardDetailState.Error(mockResponse))
-    }
-
-    @Test
-    fun `카드를 클릭하면_CardClick 상태입니다`() {
-        // given
-
-        // when
-        viewModel.onClickCardId(id = 0)
-
-        // then
-        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(CardDetailState.CardClick(id = 0))
     }
 }
