@@ -6,19 +6,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.beok.auth.domain.usecase.CheckSignInUseCase
 import com.beok.auth.domain.usecase.SignInUseCase
+import com.beok.auth.domain.usecase.SignOutUseCase
 import com.beok.auth.presentation.model.AuthState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val checkSignInUseCase: CheckSignInUseCase,
-    private val signInUseCase: SignInUseCase
+    private val signInUseCase: SignInUseCase,
+    private val signOutUseCase: SignOutUseCase
 ) : ViewModel() {
 
     private val _state = MutableLiveData<AuthState>()
@@ -35,7 +35,7 @@ class AuthViewModel @Inject constructor(
                 _state.value = AuthState.Error(throwable)
             }
             .collect {
-                if (it) _state.value = AuthState.LogIn
+                _state.value = if (it) AuthState.LogIn else AuthState.NotLogIn
             }
     }
 
@@ -50,12 +50,16 @@ class AuthViewModel @Inject constructor(
         }
         viewModelScope.launch(coroutineExceptionHandler) {
             signInUseCase.execute(nickname = nickName, password = password)
-                .onSuccess {
-                    _state.value = AuthState.LogIn
-                }
                 .onFailure {
                     _state.value = AuthState.Error(it)
                 }
         }
+    }
+
+    fun signOut() = viewModelScope.launch(coroutineExceptionHandler) {
+        signOutUseCase.execute()
+            .onFailure {
+                _state.value = AuthState.Error(it)
+            }
     }
 }

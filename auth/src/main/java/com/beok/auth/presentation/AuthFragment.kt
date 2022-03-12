@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.beok.auth.R
 import com.beok.auth.databinding.FragmentAuthBinding
 import com.beok.auth.presentation.model.AuthState
@@ -49,12 +47,19 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                AuthState.LogIn -> Unit
+                AuthState.LogIn,
+                AuthState.NotLogIn -> Unit
             }
         }
     }
 
     private fun setupBinding() {
         binding.viewModel = viewModel
+    }
+
+    companion object {
+        val TAG = AuthFragment::class.java.simpleName.toString()
+
+        fun newInstance(): AuthFragment = AuthFragment()
     }
 }

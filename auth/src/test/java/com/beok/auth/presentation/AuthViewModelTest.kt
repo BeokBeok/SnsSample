@@ -3,10 +3,12 @@ package com.beok.auth.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.beok.auth.domain.usecase.CheckSignInUseCase
 import com.beok.auth.domain.usecase.SignInUseCase
+import com.beok.auth.domain.usecase.SignOutUseCase
 import com.beok.auth.presentation.model.AuthState
 import com.beok.shared.test.MainCoroutineRule
 import com.beok.shared.test.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
+import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
@@ -27,13 +29,15 @@ class AuthViewModelTest {
 
     private val signInUseCase: SignInUseCase = mockk(relaxed = true)
     private val checkSignInUseCase: CheckSignInUseCase = mockk(relaxed = true)
+    private val signOutUseCase: SignOutUseCase = mockk(relaxed = true)
     private lateinit var viewModel: AuthViewModel
 
     @Before
     fun setup() {
         viewModel = AuthViewModel(
             signInUseCase = signInUseCase,
-            checkSignInUseCase = checkSignInUseCase
+            checkSignInUseCase = checkSignInUseCase,
+            signOutUseCase = signOutUseCase
         )
     }
 
@@ -82,9 +86,13 @@ class AuthViewModelTest {
         coEvery {
             signInUseCase.execute(nickname = nickname, password = password)
         } returns Result.success(true)
+        every {
+            checkSignInUseCase.execute()
+        } returns flow { emit(true) }
 
         // when
         viewModel.signIn(nickName = nickname, password = password)
+        viewModel.isSignIn()
 
         // then
         assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.LogIn)
@@ -102,5 +110,37 @@ class AuthViewModelTest {
 
         // then
         assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.LogIn)
+    }
+
+    @Test
+    fun `로그아웃 상태이면_NotLogIn 상태가 된다`() {
+        // given
+        every {
+            checkSignInUseCase.execute()
+        } returns flow { emit(false) }
+
+        // when
+        viewModel.isSignIn()
+
+        // then
+        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.NotLogIn)
+    }
+
+    @Test
+    fun `로그아웃 하면_NotLogIn 상태가 된다`() = runBlocking {
+        // given
+        coEvery {
+            signOutUseCase.execute()
+        } returns Result.success(Unit)
+        every {
+            checkSignInUseCase.execute()
+        } returns flow { emit(false) }
+
+        // when
+        viewModel.signOut()
+        viewModel.isSignIn()
+
+        // then
+        assertThat(viewModel.state.getOrAwaitValue()).isEqualTo(AuthState.NotLogIn)
     }
 }
