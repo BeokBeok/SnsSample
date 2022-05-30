@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OhouseSample</string>
+    <string name="app_name">SnsSample</string>
 
     <string name="tab_home">홈</string>
     <string name="tab_feed">사진 피드</string>

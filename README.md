@@ -1,4 +1,4 @@
-# OhouseSample
+# SnsSample
 
 ## Demo
 ![device-2022-03-12-143139 mp4](https://user-images.githubusercontent.com/48344355/158005346-38c7fde9-6129-4d5d-ac11-1a2e8c2aa2c4.gif)

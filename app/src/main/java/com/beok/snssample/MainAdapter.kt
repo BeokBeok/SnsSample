@@ -1,4 +1,4 @@
-package com.beok.ohousesample
+package com.beok.snssample
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

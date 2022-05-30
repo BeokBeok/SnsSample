@@ -1,4 +1,4 @@
-package com.beok.ohousesample
+package com.beok.snssample
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.beok.feed.presentation.FeedFragment
 import com.beok.home.presentation.HomeFragment
-import com.beok.ohousesample.databinding.FragmentMainBinding
+import com.beok.snssample.databinding.FragmentMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainFragment : Fragment() {

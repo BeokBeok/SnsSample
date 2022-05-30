@@ -1,7 +1,7 @@
-package com.beok.ohousesample
+package com.beok.snssample
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class OHouseApplication : Application()
+class SnsSampleApplication : Application()

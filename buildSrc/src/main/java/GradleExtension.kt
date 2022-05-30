@@ -6,7 +6,7 @@ fun BaseAppModuleExtension.androidApplication() {
     compileSdk = 31
 
     defaultConfig {
-        applicationId = "com.beok.ohousesample"
+        applicationId = "com.beok.snssample"
 
         minSdk = 23
         targetSdk = 31

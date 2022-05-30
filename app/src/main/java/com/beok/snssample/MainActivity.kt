@@ -1,4 +1,4 @@
-package com.beok.ohousesample
+package com.beok.snssample
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -10,7 +10,7 @@ import com.beok.auth.presentation.model.AuthState
 import com.beok.detail.presentation.CardDetailFragment
 import com.beok.navigation.NavigationState
 import com.beok.navigation.NavigationViewModel
-import com.beok.ohousesample.databinding.ActivityMainBinding
+import com.beok.snssample.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

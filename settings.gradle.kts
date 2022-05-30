@@ -1,4 +1,4 @@
-rootProject.name = "OhouseSample"
+rootProject.name = "SnsSample"
 include(
     ":app",
     ":auth",

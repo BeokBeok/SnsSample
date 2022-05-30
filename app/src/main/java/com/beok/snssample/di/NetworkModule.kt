@@ -1,4 +1,4 @@
-package com.beok.ohousesample.di
+package com.beok.snssample.di
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
